@@ -5,7 +5,14 @@
     </div>
     <div class="FileInput--file-input-wrapper">
       <label class="custom-file-upload">
-        <input type="file" ref="file" v-on:change="emitFileChange" :accept="acceptType" />
+        <input
+          class="file"
+          type="file"
+          ref="file"
+          v-on:change="emitFileChange"
+          v-show="false"
+          :accept="acceptType"
+        />
         Select a file
       </label>
     </div>
@@ -113,9 +120,7 @@ export default {
   width: 40%;
 }
 
-input[type="file"] {
-  display: none;
-}
+
 .FileInput--file-input-wrapper > .custom-file-upload {
   border: 1px solid #ccc;
   background-color: #003e70;
@@ -127,6 +132,13 @@ input[type="file"] {
   padding: 6px 12px;
   cursor: pointer;
   transition: all ease .2s;
+}
+
+.FileInput--file-input-wrapper > .custom-file-upload > .file {
+  display: none !important;
+}
+.file {
+  display: none !important;
 }
 
 .FileInput--file-input-wrapper > .custom-file-upload::hover {
