@@ -1,6 +1,6 @@
 {
   "name": "vue-simple-file-input",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "license": "MIT",
   "main": "dist/SimpleFileInput.umd.js",
   "module": "dist/SimpleFileInput.esm.js",
@@ -9,6 +9,10 @@
   "description": "A Simple File Input with Vue",
   "browser": {
     "./sfc": "src/SimpleFileInput.vue"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/manuelojeda/vue-simple-file-input.git"
   },
   "keywords": [
     "javascript",
@@ -42,5 +46,6 @@
     "rollup-plugin-vue": "^4.7.2",
     "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10"
-  }
+  },
+  "homepage": "https://github.com/manuelojeda/vue-simple-file-input"
 }
