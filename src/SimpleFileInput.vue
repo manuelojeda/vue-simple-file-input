@@ -113,7 +113,7 @@ export default {
   width: 40%;
 }
 
-.FileInput--file-input-wrapper > input[type="file"] {
+input[type="file"] {
   display: none;
 }
 .FileInput--file-input-wrapper > .custom-file-upload {
