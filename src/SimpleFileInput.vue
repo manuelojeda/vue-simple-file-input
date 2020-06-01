@@ -4,7 +4,7 @@
       <input type="text" class="form-control" v-model="FileName" readonly>
     </div>
     <div class="FileInput--file-input-wrapper">
-      <label class="custom-file-upload">
+      <label class="custom-file-upload" :style="buttonStyle">
         <input
           class="file"
           type="file"
@@ -13,7 +13,7 @@
           v-show="false"
           :accept="acceptType"
         />
-        Select a file
+        {{placeholderButtonText}}
       </label>
     </div>
   </div>
@@ -45,13 +45,32 @@ export default {
     isAudio: {
       type: Boolean,
       default: false
+    },
+    buttonBackgroundColor: {
+      type: String,
+      default() {
+        return '#003e70'
+      }
+    },
+    buttonTextColor: {
+      type: String,
+      default() {
+        return '#FFF'
+      }
+    },
+    placeholderInputText: {
+      type: String,
+      default: () => 'Select a file'
+    },
+    placeholderButtonText: {
+      type: String,
+      default: () => 'Select a file'
     }
   },
   name: 'SimpleFileInput',
   data () {
     return {
-      FileName: 'Select a file',
-      internalFile: null
+      FileName: this.placeholderInputText
     }
   },
   computed: {
@@ -71,6 +90,9 @@ export default {
       } else {
         return '*'
       }
+    },
+    buttonStyle() {
+      return `background-color: ${this.buttonBackgroundColor}; color: ${this.buttonTextColor};`
     }
   },
   methods: {
@@ -96,7 +118,7 @@ export default {
         this.$emit('input', response)
       } else {
         this.$emit('input', null)
-        this.FileName = 'Select a file'
+        this.FileName = this.placeholderInputText
       }
     }
   }
@@ -113,6 +135,8 @@ export default {
   background-color: white;
   width: 100%;
   display: block;
+  height: 28px;
+  border-width: 1px;
 }
 
 .FileInput--file-input-wrapper {
@@ -123,8 +147,8 @@ export default {
 
 .FileInput--file-input-wrapper > .custom-file-upload {
   border: 1px solid #ccc;
-  background-color: #003e70;
-  color: #fff;
+  /* background-color: #003e70;
+  color: #fff; */
   width: 100%;
   line-height: inherit;
   text-align: center;
